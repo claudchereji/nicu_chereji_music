@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nicu Chereji - Music Store</title>
+  <title>Nicu Chereji - Magazin de Muzică</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
 </head>
@@ -11,31 +11,31 @@
   <header class="main-header">
     <div class="header-content">
       <div class="logo">
-        <h1>Nicu Chereji</h1>
-        <p class="tagline">Independent Music | Soul | Spirituality</p>
-      </div>
-      <nav class="main-nav">
-        <a href="#store" class="nav-link">Store</a>
-        <a href="#about" class="nav-link">About</a>
-      </nav>
+         <h1>Nicu Chereji</h1>
+         <p class="tagline">Muzică Independentă | Suflet | Spiritualitate</p>
+       </div>
+       <nav class="main-nav">
+         <a href="#store" class="nav-link">Magazin</a>
+         <a href="#about" class="nav-link">Despre</a>
+       </nav>
     </div>
   </header>
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Support Independent Music</h2>
-        <p>Every purchase directly supports the creation of new music</p>
-      </div>
-    </section>
+     <section class="hero">
+       <div class="hero-content">
+         <h2>Susține Muzica Independentă</h2>
+         <p>Fiecare cumpărătură sprijină direct crearea de muzică nouă</p>
+       </div>
+     </section>
 
-    <!-- Store Section -->
-    <section id="store" class="store">
-      <div class="store-header">
-        <h2>Music Store</h2>
-        <p>All singles: $1.99 each | Buy all 6 for $11.94</p>
-      </div>
+     <!-- Store Section -->
+     <section id="store" class="store">
+       <div class="store-header">
+         <h2>Magazin de Muzică</h2>
+         <p>Toate cântecele: 1,99$ fiecare | Cumpără toate 6 pentru 11,94$</p>
+       </div>
 
       <div class="albums-grid">
         <!-- BUY ALL OPTION - TOP CARD -->
@@ -46,14 +46,14 @@
               <path d="M30 50 L45 65 L70 35" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <div class="album-info">
-            <h3>Complete Collection</h3>
-            <p class="album-type">All 6 tracks</p>
-            <p class="price">$11.94</p>
-            <button class="btn btn-primary buy-all-btn" onclick="buyAll()">
-              Buy All
-            </button>
-          </div>
+           <div class="album-info">
+             <h3>Colecția Completă</h3>
+             <p class="album-type">Toate 6 cântecele</p>
+             <p class="price">11,94$</p>
+             <button class="btn btn-primary buy-all-btn" onclick="buyAll()">
+               Cumpară Tot
+             </button>
+           </div>
         </div>
 
         <!-- TRACK LIST POPUP (Reusable for all albums) -->
@@ -80,20 +80,20 @@
           <div class="album-cover">
             <div class="cover-placeholder" style="background: linear-gradient(135deg, #f00000 0%, #c00030 100%)"></div>
           </div>
-          <div class="album-info">
-            <h3>Singles</h3>
-            <p class="album-type">Compilation</p>
-            <p class="album-tracks">6 tracks</p>
-            <p class="price">$11.94</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="openTrackListPopup('Singles')">
-                ▶ Preview Tracks
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Singles', 11.94)">
-                Buy Album
-              </button>
-            </div>
-          </div>
+           <div class="album-info">
+             <h3>Singles</h3>
+             <p class="album-type">Compilație</p>
+             <p class="album-tracks">6 cântece</p>
+             <p class="price">11,94$</p>
+             <div class="album-actions">
+               <button class="btn btn-secondary btn-listen" onclick="openTrackListPopup('Singles')">
+                 ▶ Ascultă Cântecele
+               </button>
+               <button class="btn btn-primary" onclick="buyTrack('Singles', 11.94)">
+                 Cumpără Album
+               </button>
+             </div>
+           </div>
         </div>
 
         <!-- INDIVIDUAL SINGLES (Commented out - Now in "Singles" album demo)
@@ -276,26 +276,26 @@
     <!-- About Section -->
     <section id="about" class="about">
       <div class="about-content">
-        <div class="about-header">
-          <img src="profile.jpg" alt="Nicu Chereji" class="profile-image">
-          <h2>About Nicu Chereji</h2>
-        </div>
-        <p>
-          An independent musician dedicated to creating meaningful, soulful music that speaks to the heart and spirit. 
-          Each purchase supports the creation of new original music and helps bring this artistic vision to life.
-        </p>
-        <p>
-          Your support enables me to continue making music, invest in better equipment, and collaborate with talented artists. 
-          Thank you for being part of this musical journey.
-        </p>
+         <div class="about-header">
+           <img src="profile.jpg" alt="Nicu Chereji" class="profile-image">
+           <h2>Despre Nicu Chereji</h2>
+         </div>
+         <p>
+           Un muzician independent dedicat creării muzicii semnificative și pline de suflet care vorbește inimei și spiritului. 
+           Fiecare cumpărătură sprijină crearea de muzică nouă originală și ajută la aducerea acestei viziuni artistice în viață.
+         </p>
+         <p>
+           Sprijinul tău mă permite să continui să fac muzică, să investesc în echipamente mai bune și să colaborez cu artiști talentați. 
+           Îți mulțumesc că faci parte din această călătorie muzicală.
+         </p>
       </div>
     </section>
   </main>
 
-  <footer class="main-footer">
-    <p>&copy; 2026 Nicu Chereji. All rights reserved.</p>
-    <p class="payment-info">Payments processed securely through PayPal</p>
-  </footer>
+   <footer class="main-footer">
+     <p>&copy; 2026 Nicu Chereji. Toate drepturile rezervate.</p>
+     <p class="payment-info">Plăți procesate în siguranță prin PayPal</p>
+   </footer>
 
   <!-- Audio Player for Preview -->
   <audio id="audioPlayer" style="display: none;"></audio>
@@ -310,32 +310,32 @@
       
       <div class="success-icon">✓</div>
       
-      <h2>Thank You for Your Purchase!</h2>
-      
-      <p class="purchase-item" id="purchase-item-name"></p>
-      
-      <p class="download-message">
-        Your download should start immediately.<br>
-        If it doesn't, use the button below:
-      </p>
-      
-      <div class="download-section">
-        <a id="download-link" class="btn btn-primary btn-download" href="#" download>
-          ⬇ Download Now
-        </a>
-      </div>
-      
-      <p class="order-info">
-        Order ID: <span id="order-id"></span>
-      </p>
-      
-      <p class="support-text">
-        Check your email for a receipt and download link.
-      </p>
-      
-      <button class="btn btn-secondary" onclick="closePurchaseModal()" style="width: 100%; margin-top: 1rem;">
-        Close
-      </button>
+      <h2>Mulțumim pentru Cumpărătura Ta!</h2>
+       
+       <p class="purchase-item" id="purchase-item-name"></p>
+       
+       <p class="download-message">
+         Descărcarea ar trebui să înceapă imediat.<br>
+         Dacă nu, folosește butonul de mai jos:
+       </p>
+       
+       <div class="download-section">
+         <a id="download-link" class="btn btn-primary btn-download" href="#" download>
+           ⬇ Descarcă Acum
+         </a>
+       </div>
+       
+       <p class="order-info">
+         ID Comandă: <span id="order-id"></span>
+       </p>
+       
+       <p class="support-text">
+         Verifică email-ul tău pentru chitanță și link de descărcare.
+       </p>
+       
+       <button class="btn btn-secondary" onclick="closePurchaseModal()" style="width: 100%; margin-top: 1rem;">
+         Închide
+       </button>
     </div>
   </div>
 

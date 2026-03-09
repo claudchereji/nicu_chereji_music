@@ -241,7 +241,7 @@ function formatTime(seconds) {
  * @param {number} price - Price of the track
  */
 function buyTrack(trackName, price = SINGLE_PRICE) {
-  const description = `${trackName} by Nicu Chereji`;
+  const description = `${trackName} de Nicu Chereji`;
   initializePayPalCheckout(price, description, trackName);
 }
 
@@ -249,8 +249,8 @@ function buyTrack(trackName, price = SINGLE_PRICE) {
  * Handle "Buy All" complete collection purchase
  */
 function buyAll() {
-  const description = 'Complete Music Collection - All 6 tracks by Nicu Chereji';
-  initializePayPalCheckout(COMPLETE_COLLECTION_PRICE, description, 'Complete Collection');
+  const description = 'Colecția Completă de Muzică - Toate 6 cântecele de Nicu Chereji';
+  initializePayPalCheckout(COMPLETE_COLLECTION_PRICE, description, 'Colecția Completă');
 }
 
 /**
@@ -262,12 +262,12 @@ function buyAll() {
 function initializePayPalCheckout(amount, description, itemName) {
   // Check if PayPal SDK is loaded
   if (typeof paypal === 'undefined') {
-    alert('⚠️ PayPal is not configured. Please replace YOUR_PAYPAL_CLIENT_ID with your actual Client ID in the HTML file.');
-    console.log('To set up PayPal:');
-    console.log('1. Go to https://developer.paypal.com/dashboard/');
-    console.log('2. Create a Business account');
-    console.log('3. Get your Client ID');
-    console.log('4. Replace YOUR_PAYPAL_CLIENT_ID in index.html');
+    alert('⚠️ PayPal nu este configurat. Te rog să înlocuiești YOUR_PAYPAL_CLIENT_ID cu ID-ul tău real în fișierul HTML.');
+    console.log('Pentru a configura PayPal:');
+    console.log('1. Mergi la https://developer.paypal.com/dashboard/');
+    console.log('2. Creează un cont de afaceri');
+    console.log('3. Obține ID-ul tău de client');
+    console.log('4. Înlocuiește YOUR_PAYPAL_CLIENT_ID în index.html');
     return;
   }
 
@@ -336,11 +336,11 @@ function initializePayPalCheckout(amount, description, itemName) {
       });
     },
     onError: function(err) {
-      console.error('Payment error:', err);
-      alert('An error occurred during payment. Please try again.');
+      console.error('Eroare la plată:', err);
+      alert('A apărut o eroare în timpul plății. Te rog încearcă din nou.');
     },
     onCancel: function(data) {
-      console.log('Payment cancelled:', data);
+      console.log('Plată anulată:', data);
       container.style.display = 'none';
     }
   }).render('#paypal-button-container');
@@ -380,7 +380,7 @@ function showPurchaseNotification(itemName, amount, orderId) {
   modal.style.display = 'flex';
 
   // Auto-download for single tracks (trigger download)
-  if (itemName !== 'Complete Collection') {
+  if (itemName !== 'Colecția Completă') {
     // Simulate clicking the download link after a short delay
     setTimeout(() => {
       downloadLink.click();
@@ -393,17 +393,17 @@ function showPurchaseNotification(itemName, amount, orderId) {
 
 /**
  * Generate download URL for a track or all tracks
- * @param {string} itemName - Name of item (track name or "Complete Collection")
+ * @param {string} itemName - Name of item (track name or "Colecția Completă")
  * @returns {string} Download URL
  */
 function generateDownloadLink(itemName) {
-  if (itemName === 'Complete Collection') {
+  if (itemName === 'Colecția Completă') {
     // For complete collection, create a download URL that points to a zip
     // Since this is static hosting, we'll create a data URL with instructions
     // In production, this would be a real zip file
     return 'data:text/plain;charset=utf-8,' + encodeURIComponent(
-      'Complete Collection - Download All Tracks\n\n' +
-      'Please download each track individually:\n\n' +
+      'Colecția Completă - Descarcă Toate Cântecele\n\n' +
+      'Te rog să descarci fiecare cântec individual:\n\n' +
       ALL_TRACKS.map((track, idx) => `${idx + 1}. ${track}\n   ${window.location.origin}/${TRACKS_MAP[track]}`).join('\n\n')
     );
   } else {
@@ -445,7 +445,7 @@ function openTrackListPopup(albumName) {
 
   // Set popup header
   albumTitle.textContent = albumName;
-  trackCount.textContent = `${album.tracks.length} track${album.tracks.length !== 1 ? 's' : ''}`;
+  trackCount.textContent = `${album.tracks.length} cântec${album.tracks.length !== 1 ? 'e' : ''}`;
 
   // Clear and rebuild track list
   trackListContainer.innerHTML = '';
@@ -652,11 +652,11 @@ function seekPopupTrack(slider) {
  * Initialize on page load
  */
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🎵 Nicu Chereji Music Store loaded');
+  console.log('🎵 Magazinul de Muzică Nicu Chereji a fost încărcat');
 
   // Check if PayPal is configured
   if (PAYPAL_CLIENT_ID === 'YOUR_PAYPAL_CLIENT_ID') {
-    console.warn('⚠️ PayPal not configured. Update YOUR_PAYPAL_CLIENT_ID in index.html');
+    console.warn('⚠️ PayPal nu este configurat. Actualizează YOUR_PAYPAL_CLIENT_ID în index.html');
   }
 
   // Add smooth scroll behavior for navigation links

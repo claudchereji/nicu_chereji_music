@@ -1,45 +1,187 @@
-// Track mapping for downloads (individual singles)
-const TRACKS_MAP = {
-  'Bagă sabia in teaca': 'ncmusic/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.mp3',
-  'Cine-i mai puternic': 'ncmusic/Cine-i mai puternic.mp3',
-  'Isus inca are răbdare': 'ncmusic/Isus  inca are răbdare - Nicu Chereji.mp3',
-  'Iubire fara de margini': 'ncmusic/Iubire fara de margini.mp3',
-  'Daca Mama-ti Mai Traieste': 'ncmusic/Nicu Chereji - Daca Mama-ti Mai Traieste.mp3',
-  'Shema Israel': 'ncmusic/Shema Israel , Nicu Chereji.mp3'
+// Album art manifest - Maps song names to album art images
+const ALBUM_ART_MANIFEST = {
+  ",, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb": "album-art-cache/,, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb.jpg",
+  "Am fost odata tanar ,Nicu Chereji": "album-art-cache/Am fost odata tanar ,Nicu Chereji.jpg",
+  "Astăzi Ești o Floare Rară": "album-art-cache/Astăzi Ești o Floare Rară.jpg",
+  "Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji": "album-art-cache/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.jpg",
+  "Ce-i tineretea - Nicu Chereji": "album-art-cache/Ce-i tineretea - Nicu Chereji.jpg",
+  "Cine s-a atins - Nicu Chereji": "album-art-cache/Cine s-a atins - Nicu Chereji.jpg",
+  "Cine-i mai puternic": "album-art-cache/Cine-i mai puternic.jpg",
+  "Dacă ai părinți în viață - Nicu Chereji": "album-art-cache/Dacă ai părinți în viață - Nicu Chereji.jpg",
+  "Dacă treci prin încercare (Nicu Chereji": "album-art-cache/Dacă treci prin încercare (Nicu Chereji.jpg",
+  "De ce a trebuit să înduri Isuse , Nicu Chereji": "album-art-cache/De ce a trebuit să înduri Isuse , Nicu Chereji.jpg",
+  "Doamne cu ce-s eu mai bun": "album-art-cache/Doamne cu ce-s eu mai bun.jpg",
+  "Duhul Sfint - Nicu Chereji": "album-art-cache/Duhul Sfint - Nicu Chereji.jpg",
+  "Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji": "album-art-cache/Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji.jpg",
+  "Gata de zbor - Nicu Chereji": "album-art-cache/Gata de zbor - Nicu Chereji.jpg",
+  "Isus  inca are răbdare - Nicu Chereji": "album-art-cache/Isus  inca are răbdare - Nicu Chereji.jpg",
+  "Iubire fara de margini": "album-art-cache/Iubire fara de margini.jpg",
+  "Lovit de valurile marii - Nicu Chereji": "album-art-cache/Lovit de valurile marii - Nicu Chereji.jpg",
+  "Mare Imparat": "album-art-cache/Mare Imparat.jpg",
+  "May 25, 2024": "album-art-cache/May 25, 2024.jpg",
+  "Muzica Crestina Nicu Chereji Petru umbla deasupra apei": "album-art-cache/Muzica Crestina Nicu Chereji Petru umbla deasupra apei.jpg",
+  "Muzica crestina- Nicu Chereji - Sa te binecuvinteze": "album-art-cache/Muzica crestina- Nicu Chereji - Sa te binecuvinteze.jpg",
+  "Nainte-i Domnul - Nicu Chereji": "album-art-cache/Nainte-i Domnul - Nicu Chereji.jpg",
+  "Nicu Chereji   Toamna Dragostei": "album-art-cache/Nicu Chereji   Toamna Dragostei.jpg",
+  "Nicu Chereji - ,, Ca funia impletita- n trei ,,": "album-art-cache/Nicu Chereji - ,, Ca funia impletita- n trei ,,.jpg",
+  "Nicu Chereji - Betlehem": "album-art-cache/Nicu Chereji - Betlehem.jpg",
+  "Nicu Chereji - Catre Tine (muzica crestina)": "album-art-cache/Nicu Chereji - Catre Tine (muzica crestina).jpg",
+  "Nicu Chereji - Când nu mai ai nici un răspuns": "album-art-cache/Nicu Chereji - Când nu mai ai nici un răspuns.jpg",
+  "Nicu Chereji - Daca Mama-ti Mai Traieste": "album-art-cache/Nicu Chereji - Daca Mama-ti Mai Traieste.jpg",
+  "Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri": "album-art-cache/Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri.jpg",
+  "Nicu Chereji - E Iarasi Primavara": "album-art-cache/Nicu Chereji - E Iarasi Primavara.jpg",
+  "Nicu Chereji - Mare-i Dumnezeu": "album-art-cache/Nicu Chereji - Mare-i Dumnezeu.jpg",
+  "Nicu Chereji - Mi-ai Daruit Inca O Zi": "album-art-cache/Nicu Chereji - Mi-ai Daruit Inca O Zi.jpg",
+  "Nicu Chereji - O Ce Greu": "album-art-cache/Nicu Chereji - O Ce Greu.jpg",
+  "Nicu Chereji - O cetate-n sarbatoare": "album-art-cache/Nicu Chereji - O cetate-n sarbatoare.jpg",
+  "Nicu Chereji - Ostas in oastea Domnului": "album-art-cache/Nicu Chereji - Ostas in oastea Domnului.jpg",
+  "Nicu Chereji - Precum iarba (muzica crestina)": "album-art-cache/Nicu Chereji - Precum iarba (muzica crestina).jpg",
+  "Nicu Chereji - Roada Duhului": "album-art-cache/Nicu Chereji - Roada Duhului.jpg",
+  "Nicu Chereji - Sunt Un Copil Sarman": "album-art-cache/Nicu Chereji - Sunt Un Copil Sarman.jpg",
+  "Nicu Chereji - Sunt omul NEGATIV": "album-art-cache/Nicu Chereji - Sunt omul NEGATIV.jpg",
+  "Nicu Chereji - Sus la templu NEGATIV": "album-art-cache/Nicu Chereji - Sus la templu NEGATIV.jpg",
+  "Nicu Chereji - Tu mai dinainte (muzica crestina)": "album-art-cache/Nicu Chereji - Tu mai dinainte (muzica crestina).jpg",
+  "Nicu Chereji - Vestea bună": "album-art-cache/Nicu Chereji - Vestea bună.jpg",
+  "Nicu Chereji - Vorbea Isus NEGATIV": "album-art-cache/Nicu Chereji - Vorbea Isus NEGATIV.jpg",
+  "O cât de binecuvântat sunt - Nicu Chereji": "album-art-cache/O cât de binecuvântat sunt - Nicu Chereji.jpg",
+  "Poporule Rascumparat - Nicu Chereji": "album-art-cache/Poporule Rascumparat - Nicu Chereji.jpg",
+  "Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou)": "album-art-cache/Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou).jpg",
+  "Se-aude corul ingeresc - Nicu Chereji": "album-art-cache/Se-aude corul ingeresc - Nicu Chereji.jpg",
+  "Shema Israel , Nicu Chereji": "album-art-cache/Shema Israel , Nicu Chereji.jpg",
+  "Sunt omul care striga catre cer - Nicu Chereji": "album-art-cache/Sunt omul care striga catre cer - Nicu Chereji.jpg",
+  "Trece Timpul, Nicu Chereji": "album-art-cache/Trece Timpul, Nicu Chereji.jpg",
+  "Tu Esti calea - Nicu Chereji": "album-art-cache/Tu Esti calea - Nicu Chereji.jpg",
+  "Umblat-ai pe pamant - Nicu Chereji": "album-art-cache/Umblat-ai pe pamant - Nicu Chereji.jpg",
+  "Unii au pe mese - Nicu Chereji ( Nou)": "album-art-cache/Unii au pe mese - Nicu Chereji ( Nou).jpg",
+  "Vorbea Isus - Nicu Chereji": "album-art-cache/Vorbea Isus - Nicu Chereji.jpg",
+  "Vreau pacea Ta - Nicu Chereji": "album-art-cache/Vreau pacea Ta - Nicu Chereji.jpg",
+  "＂Daca treci prin incercare＂ - Nicu Chereji": "album-art-cache/＂Daca treci prin incercare＂ - Nicu Chereji.jpg"
 };
 
-const ALL_TRACKS = [
-  'Bagă sabia in teaca',
-  'Cine-i mai puternic',
-  'Isus inca are răbdare',
-  'Iubire fara de margini',
-  'Daca Mama-ti Mai Traieste',
-  'Shema Israel'
+// Track mapping for downloads (individual singles) - Auto-generated from song files
+const TRACKS_MAP = {
+  ',, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb': 'ncmusic/,, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb.mp3',
+  'Am fost odata tanar ,Nicu Chereji': 'ncmusic/Am fost odata tanar ,Nicu Chereji.mp3',
+  'Astăzi Ești o Floare Rară': 'ncmusic/Astăzi Ești o Floare Rară.mp3',
+  'Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji': 'ncmusic/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.mp3',
+  'Ce-i tineretea - Nicu Chereji': 'ncmusic/Ce-i tineretea - Nicu Chereji.mp3',
+  'Cine s-a atins - Nicu Chereji': 'ncmusic/Cine s-a atins - Nicu Chereji.mp3',
+  'Cine-i mai puternic': 'ncmusic/Cine-i mai puternic.mp3',
+  'Dacă ai părinți în viață - Nicu Chereji': 'ncmusic/Dacă ai părinți în viață - Nicu Chereji.mp3',
+  'Dacă treci prin încercare (Nicu Chereji': 'ncmusic/Dacă treci prin încercare (Nicu Chereji.mp3',
+  'De ce a trebuit să înduri Isuse , Nicu Chereji': 'ncmusic/De ce a trebuit să înduri Isuse , Nicu Chereji.mp3',
+  'Doamne cu ce-s eu mai bun': 'ncmusic/Doamne cu ce-s eu mai bun.mp3',
+  'Duhul Sfint - Nicu Chereji': 'ncmusic/Duhul Sfint - Nicu Chereji.mp3',
+  'Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji': 'ncmusic/Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji.mp3',
+  'Gata de zbor - Nicu Chereji': 'ncmusic/Gata de zbor - Nicu Chereji.mp3',
+  'Isus  inca are răbdare - Nicu Chereji': 'ncmusic/Isus  inca are răbdare - Nicu Chereji.mp3',
+  'Iubire fara de margini': 'ncmusic/Iubire fara de margini.mp3',
+  'Lovit de valurile marii - Nicu Chereji': 'ncmusic/Lovit de valurile marii - Nicu Chereji.mp3',
+  'Mare Imparat': 'ncmusic/Mare Imparat.mp3',
+  'May 25, 2024': 'ncmusic/May 25, 2024.mp3',
+  'Muzica Crestina Nicu Chereji Petru umbla deasupra apei': 'ncmusic/Muzica Crestina Nicu Chereji Petru umbla deasupra apei.mp3',
+  'Muzica crestina- Nicu Chereji - Sa te binecuvinteze': 'ncmusic/Muzica crestina- Nicu Chereji - Sa te binecuvinteze.mp3',
+  'Nainte-i Domnul - Nicu Chereji': 'ncmusic/Nainte-i Domnul - Nicu Chereji.mp3',
+  'Nicu Chereji   Toamna Dragostei': 'ncmusic/Nicu Chereji   Toamna Dragostei.mp3',
+  'Nicu Chereji - ,, Ca funia impletita- n trei ,,': 'ncmusic/Nicu Chereji - ,, Ca funia impletita- n trei ,,.mp3',
+  'Nicu Chereji - Betlehem': 'ncmusic/Nicu Chereji - Betlehem.mp3',
+  'Nicu Chereji - Catre Tine (muzica crestina)': 'ncmusic/Nicu Chereji - Catre Tine (muzica crestina).mp3',
+  'Nicu Chereji - Când nu mai ai nici un răspuns': 'ncmusic/Nicu Chereji - Când nu mai ai nici un răspuns.mp3',
+  'Nicu Chereji - Daca Mama-ti Mai Traieste': 'ncmusic/Nicu Chereji - Daca Mama-ti Mai Traieste.mp3',
+  'Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri': 'ncmusic/Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri.mp3',
+  'Nicu Chereji - E Iarasi Primavara': 'ncmusic/Nicu Chereji - E Iarasi Primavara.mp3',
+  'Nicu Chereji - Mare-i Dumnezeu': 'ncmusic/Nicu Chereji - Mare-i Dumnezeu.mp3',
+  'Nicu Chereji - Mi-ai Daruit Inca O Zi': 'ncmusic/Nicu Chereji - Mi-ai Daruit Inca O Zi.mp3',
+  'Nicu Chereji - O Ce Greu': 'ncmusic/Nicu Chereji - O Ce Greu.mp3',
+  'Nicu Chereji - O cetate-n sarbatoare': 'ncmusic/Nicu Chereji - O cetate-n sarbatoare.mp3',
+  'Nicu Chereji - Ostas in oastea Domnului': 'ncmusic/Nicu Chereji - Ostas in oastea Domnului.mp3',
+  'Nicu Chereji - Precum iarba (muzica crestina)': 'ncmusic/Nicu Chereji - Precum iarba (muzica crestina).mp3',
+  'Nicu Chereji - Roada Duhului': 'ncmusic/Nicu Chereji - Roada Duhului.mp3',
+  'Nicu Chereji - Sunt Un Copil Sarman': 'ncmusic/Nicu Chereji - Sunt Un Copil Sarman.mp3',
+  'Nicu Chereji - Sunt omul NEGATIV': 'ncmusic/Nicu Chereji - Sunt omul NEGATIV.mp3',
+  'Nicu Chereji - Sus la templu NEGATIV': 'ncmusic/Nicu Chereji - Sus la templu NEGATIV.mp3',
+  'Nicu Chereji - Tu mai dinainte (muzica crestina)': 'ncmusic/Nicu Chereji - Tu mai dinainte (muzica crestina).mp3',
+  'Nicu Chereji - Vestea bună': 'ncmusic/Nicu Chereji - Vestea bună.mp3',
+  'Nicu Chereji - Vorbea Isus NEGATIV': 'ncmusic/Nicu Chereji - Vorbea Isus NEGATIV.mp3',
+  'O cât de binecuvântat sunt - Nicu Chereji': 'ncmusic/O cât de binecuvântat sunt - Nicu Chereji.mp3',
+  'Poporule Rascumparat - Nicu Chereji': 'ncmusic/Poporule Rascumparat - Nicu Chereji.mp3',
+  'Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou)': 'ncmusic/Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou).mp3',
+  'Se-aude corul ingeresc - Nicu Chereji': 'ncmusic/Se-aude corul ingeresc - Nicu Chereji.mp3',
+  'Shema Israel , Nicu Chereji': 'ncmusic/Shema Israel , Nicu Chereji.mp3',
+  'Sunt omul care striga catre cer - Nicu Chereji': 'ncmusic/Sunt omul care striga catre cer - Nicu Chereji.mp3',
+  'Trece Timpul, Nicu Chereji': 'ncmusic/Trece Timpul, Nicu Chereji.mp3',
+  'Tu Esti calea - Nicu Chereji': 'ncmusic/Tu Esti calea - Nicu Chereji.mp3',
+  'Umblat-ai pe pamant - Nicu Chereji': 'ncmusic/Umblat-ai pe pamant - Nicu Chereji.mp3',
+  'Unii au pe mese - Nicu Chereji ( Nou)': 'ncmusic/Unii au pe mese - Nicu Chereji ( Nou).mp3',
+  'Vorbea Isus - Nicu Chereji': 'ncmusic/Vorbea Isus - Nicu Chereji.mp3',
+  'Vreau pacea Ta - Nicu Chereji': 'ncmusic/Vreau pacea Ta - Nicu Chereji.mp3',
+  '＂Daca treci prin incercare＂ - Nicu Chereji': 'ncmusic/＂Daca treci prin incercare＂ - Nicu Chereji.mp3'
+};
+
+// Array of all individual songs for displaying as grid tiles
+const ALL_SONGS = [
+  { name: ',, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb', path: 'ncmusic/,, Isus iubit ,, Nelu Gabor, Nicu Chereji si Otniel Știrb.mp3' },
+  { name: 'Am fost odata tanar ,Nicu Chereji', path: 'ncmusic/Am fost odata tanar ,Nicu Chereji.mp3' },
+  { name: 'Astăzi Ești o Floare Rară', path: 'ncmusic/Astăzi Ești o Floare Rară.mp3' },
+  { name: 'Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji', path: 'ncmusic/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.mp3' },
+  { name: 'Ce-i tineretea - Nicu Chereji', path: 'ncmusic/Ce-i tineretea - Nicu Chereji.mp3' },
+  { name: 'Cine s-a atins - Nicu Chereji', path: 'ncmusic/Cine s-a atins - Nicu Chereji.mp3' },
+  { name: 'Cine-i mai puternic', path: 'ncmusic/Cine-i mai puternic.mp3' },
+  { name: 'Dacă ai părinți în viață - Nicu Chereji', path: 'ncmusic/Dacă ai părinți în viață - Nicu Chereji.mp3' },
+  { name: 'Dacă treci prin încercare (Nicu Chereji', path: 'ncmusic/Dacă treci prin încercare (Nicu Chereji.mp3' },
+  { name: 'De ce a trebuit să înduri Isuse , Nicu Chereji', path: 'ncmusic/De ce a trebuit să înduri Isuse , Nicu Chereji.mp3' },
+  { name: 'Doamne cu ce-s eu mai bun', path: 'ncmusic/Doamne cu ce-s eu mai bun.mp3' },
+  { name: 'Duhul Sfint - Nicu Chereji', path: 'ncmusic/Duhul Sfint - Nicu Chereji.mp3' },
+  { name: 'Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji', path: 'ncmusic/Fiecare Clipa ( Cantare de nunta ) - Nicu Chereji.mp3' },
+  { name: 'Gata de zbor - Nicu Chereji', path: 'ncmusic/Gata de zbor - Nicu Chereji.mp3' },
+  { name: 'Isus  inca are răbdare - Nicu Chereji', path: 'ncmusic/Isus  inca are răbdare - Nicu Chereji.mp3' },
+  { name: 'Iubire fara de margini', path: 'ncmusic/Iubire fara de margini.mp3' },
+  { name: 'Lovit de valurile marii - Nicu Chereji', path: 'ncmusic/Lovit de valurile marii - Nicu Chereji.mp3' },
+  { name: 'Mare Imparat', path: 'ncmusic/Mare Imparat.mp3' },
+  { name: 'May 25, 2024', path: 'ncmusic/May 25, 2024.mp3' },
+  { name: 'Muzica Crestina Nicu Chereji Petru umbla deasupra apei', path: 'ncmusic/Muzica Crestina Nicu Chereji Petru umbla deasupra apei.mp3' },
+  { name: 'Muzica crestina- Nicu Chereji - Sa te binecuvinteze', path: 'ncmusic/Muzica crestina- Nicu Chereji - Sa te binecuvinteze.mp3' },
+  { name: 'Nainte-i Domnul - Nicu Chereji', path: 'ncmusic/Nainte-i Domnul - Nicu Chereji.mp3' },
+  { name: 'Nicu Chereji   Toamna Dragostei', path: 'ncmusic/Nicu Chereji   Toamna Dragostei.mp3' },
+  { name: 'Nicu Chereji - ,, Ca funia impletita- n trei ,,', path: 'ncmusic/Nicu Chereji - ,, Ca funia impletita- n trei ,,.mp3' },
+  { name: 'Nicu Chereji - Betlehem', path: 'ncmusic/Nicu Chereji - Betlehem.mp3' },
+  { name: 'Nicu Chereji - Catre Tine (muzica crestina)', path: 'ncmusic/Nicu Chereji - Catre Tine (muzica crestina).mp3' },
+  { name: 'Nicu Chereji - Când nu mai ai nici un răspuns', path: 'ncmusic/Nicu Chereji - Când nu mai ai nici un răspuns.mp3' },
+  { name: 'Nicu Chereji - Daca Mama-ti Mai Traieste', path: 'ncmusic/Nicu Chereji - Daca Mama-ti Mai Traieste.mp3' },
+  { name: 'Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri', path: 'ncmusic/Nicu Chereji - Daca treci prin incercare NEGATIV cu versuri.mp3' },
+  { name: 'Nicu Chereji - E Iarasi Primavara', path: 'ncmusic/Nicu Chereji - E Iarasi Primavara.mp3' },
+  { name: 'Nicu Chereji - Mare-i Dumnezeu', path: 'ncmusic/Nicu Chereji - Mare-i Dumnezeu.mp3' },
+  { name: 'Nicu Chereji - Mi-ai Daruit Inca O Zi', path: 'ncmusic/Nicu Chereji - Mi-ai Daruit Inca O Zi.mp3' },
+  { name: 'Nicu Chereji - O Ce Greu', path: 'ncmusic/Nicu Chereji - O Ce Greu.mp3' },
+  { name: 'Nicu Chereji - O cetate-n sarbatoare', path: 'ncmusic/Nicu Chereji - O cetate-n sarbatoare.mp3' },
+  { name: 'Nicu Chereji - Ostas in oastea Domnului', path: 'ncmusic/Nicu Chereji - Ostas in oastea Domnului.mp3' },
+  { name: 'Nicu Chereji - Precum iarba (muzica crestina)', path: 'ncmusic/Nicu Chereji - Precum iarba (muzica crestina).mp3' },
+  { name: 'Nicu Chereji - Roada Duhului', path: 'ncmusic/Nicu Chereji - Roada Duhului.mp3' },
+  { name: 'Nicu Chereji - Sunt Un Copil Sarman', path: 'ncmusic/Nicu Chereji - Sunt Un Copil Sarman.mp3' },
+  { name: 'Nicu Chereji - Sunt omul NEGATIV', path: 'ncmusic/Nicu Chereji - Sunt omul NEGATIV.mp3' },
+  { name: 'Nicu Chereji - Sus la templu NEGATIV', path: 'ncmusic/Nicu Chereji - Sus la templu NEGATIV.mp3' },
+  { name: 'Nicu Chereji - Tu mai dinainte (muzica crestina)', path: 'ncmusic/Nicu Chereji - Tu mai dinainte (muzica crestina).mp3' },
+  { name: 'Nicu Chereji - Vestea bună', path: 'ncmusic/Nicu Chereji - Vestea bună.mp3' },
+  { name: 'Nicu Chereji - Vorbea Isus NEGATIV', path: 'ncmusic/Nicu Chereji - Vorbea Isus NEGATIV.mp3' },
+  { name: 'O cât de binecuvântat sunt - Nicu Chereji', path: 'ncmusic/O cât de binecuvântat sunt - Nicu Chereji.mp3' },
+  { name: 'Poporule Rascumparat - Nicu Chereji', path: 'ncmusic/Poporule Rascumparat - Nicu Chereji.mp3' },
+  { name: 'Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou)', path: 'ncmusic/Ridica-ți privirea spre ceruri ,Nicu Chereji (Nou).mp3' },
+  { name: 'Se-aude corul ingeresc - Nicu Chereji', path: 'ncmusic/Se-aude corul ingeresc - Nicu Chereji.mp3' },
+  { name: 'Shema Israel , Nicu Chereji', path: 'ncmusic/Shema Israel , Nicu Chereji.mp3' },
+  { name: 'Sunt omul care striga catre cer - Nicu Chereji', path: 'ncmusic/Sunt omul care striga catre cer - Nicu Chereji.mp3' },
+  { name: 'Trece Timpul, Nicu Chereji', path: 'ncmusic/Trece Timpul, Nicu Chereji.mp3' },
+  { name: 'Tu Esti calea - Nicu Chereji', path: 'ncmusic/Tu Esti calea - Nicu Chereji.mp3' },
+  { name: 'Umblat-ai pe pamant - Nicu Chereji', path: 'ncmusic/Umblat-ai pe pamant - Nicu Chereji.mp3' },
+  { name: 'Unii au pe mese - Nicu Chereji ( Nou)', path: 'ncmusic/Unii au pe mese - Nicu Chereji ( Nou).mp3' },
+  { name: 'Vorbea Isus - Nicu Chereji', path: 'ncmusic/Vorbea Isus - Nicu Chereji.mp3' },
+  { name: 'Vreau pacea Ta - Nicu Chereji', path: 'ncmusic/Vreau pacea Ta - Nicu Chereji.mp3' },
+  { name: '＂Daca treci prin incercare＂ - Nicu Chereji', path: 'ncmusic/＂Daca treci prin incercare＂ - Nicu Chereji.mp3' }
 ];
 
-// ALBUM CONFIGURATION
-// Format: { albumName: { tracks: [...], directory: 'path' } }
-const ALBUMS = {
-  'Singles': {
-    tracks: [
-      { number: '01', name: 'Bagă sabia in teaca', path: 'ncmusic/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.mp3' },
-      { number: '02', name: 'Cine-i mai puternic', path: 'ncmusic/Cine-i mai puternic.mp3' },
-      { number: '03', name: 'Isus inca are răbdare', path: 'ncmusic/Isus  inca are răbdare - Nicu Chereji.mp3' },
-      { number: '04', name: 'Iubire fara de margini', path: 'ncmusic/Iubire fara de margini.mp3' },
-      { number: '05', name: 'Daca Mama-ti Mai Traieste', path: 'ncmusic/Nicu Chereji - Daca Mama-ti Mai Traieste.mp3' },
-      { number: '06', name: 'Shema Israel', path: 'ncmusic/Shema Israel , Nicu Chereji.mp3' }
-    ],
-    price: 11.94
-  }
-  // Add more albums here:
-  // 'Album Name': {
-  //   tracks: [
-  //     { number: '01', name: 'Track Name', path: 'albums/Album Name/01 - Track Name.mp3' },
-  //     ...
-  //   ],
-  //   price: 9.99
-  // }
-};
+// EMPTY ALBUMS CONFIG - kept for miniplayer functionality but no longer used for display
+// Can be used in future for album groupings
+const ALBUMS = {};
+
 
 let currentPopupAlbum = null;
 let popupAudio = null;
@@ -52,7 +194,7 @@ let popupUpdateTimeInterval = null;
 
 const PAYPAL_CLIENT_ID = 'YOUR_PAYPAL_CLIENT_ID';
 const SINGLE_PRICE = 1.99;
-const COMPLETE_COLLECTION_PRICE = 11.94; // 6 tracks × $1.99
+// COMPLETE_COLLECTION_PRICE is now calculated dynamically in buyAll() based on ALL_SONGS.length
 
 let currentAudio = null;
 let currentButton = null;
@@ -249,8 +391,9 @@ function buyTrack(trackName, price = SINGLE_PRICE) {
  * Handle "Buy All" complete collection purchase
  */
 function buyAll() {
-  const description = 'Colecția Completă de Muzică - Toate 6 cântecele de Nicu Chereji';
-  initializePayPalCheckout(COMPLETE_COLLECTION_PRICE, description, 'Colecția Completă');
+  const totalPrice = (ALL_SONGS.length * SINGLE_PRICE).toFixed(2);
+  const description = `Colecția Completă de Muzică - Toate ${ALL_SONGS.length} cântecele de Nicu Chereji`;
+  initializePayPalCheckout(parseFloat(totalPrice), description, 'Colecția Completă');
 }
 
 /**
@@ -649,10 +792,88 @@ function seekPopupTrack(slider) {
 }
 
 /**
+ * Generate song grid tiles dynamically
+ */
+function generateSongGrid() {
+  const grid = document.getElementById('songs-grid');
+  if (!grid) return;
+
+  // Get the "Buy All" card (it's already in the grid)
+  const buyAllCard = grid.querySelector('.buy-all-card');
+  const popupDiv = grid.querySelector('#track-list-popup');
+  
+  // Generate a random gradient color for each song
+  const gradients = [
+    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+    'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)',
+    'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+    'linear-gradient(135deg, #a8ec5e 0%, #ff7d73 100%)',
+    'linear-gradient(135deg, #ff6b9d 0%, #c44569 100%)',
+    'linear-gradient(135deg, #ffd89b 0%, #19547b 100%)'
+  ];
+
+  // Create song cards
+  ALL_SONGS.forEach((song, index) => {
+    const gradient = gradients[index % gradients.length];
+    const albumArt = ALBUM_ART_MANIFEST[song.name];
+    const songCard = document.createElement('div');
+    songCard.className = 'album-card';
+    
+    // Use album art if available, otherwise use gradient
+    let coverHTML;
+    if (albumArt) {
+      coverHTML = `<img src="${albumArt}" alt="${song.name}" class="album-cover-image" style="width: 100%; height: 100%; object-fit: cover;">`;
+    } else {
+      coverHTML = `<div class="cover-placeholder" style="background: ${gradient}"></div>`;
+    }
+    
+    songCard.innerHTML = `
+      <div class="album-cover">
+        ${coverHTML}
+      </div>
+      <div class="album-info">
+        <h3>${song.name}</h3>
+        <p class="album-type">Single</p>
+        <p class="price">$${SINGLE_PRICE.toFixed(2)}</p>
+        <div class="album-actions">
+          <button class="btn btn-secondary btn-listen" onclick="playPreview(this, '${song.path}')">
+            ▶ Ascultă
+          </button>
+          <button class="btn btn-primary" onclick="buyTrack('${song.name}', ${SINGLE_PRICE})">
+            Cumpără
+          </button>
+        </div>
+        <div class="mini-player" style="display: none;">
+          <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
+          <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
+          <span class="time-display">0:00</span>
+        </div>
+      </div>
+    `;
+    
+    grid.appendChild(songCard);
+  });
+}
+
+/**
  * Initialize on page load
  */
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🎵 Magazinul de Muzică Nicu Chereji a fost încărcat');
+
+  // Generate individual song grid tiles
+  generateSongGrid();
+
+  // Update store subtitle with song count
+  const totalSongs = ALL_SONGS.length;
+  const totalPrice = (totalSongs * SINGLE_PRICE).toFixed(2);
+  document.getElementById('store-subtitle').textContent = `Toate cântecele: ${SINGLE_PRICE.toFixed(2)}$ fiecare | Cumpără toate ${totalSongs} pentru ${totalPrice}$`;
+  document.getElementById('buy-all-count').textContent = `Toate ${totalSongs} cântecele`;
+  document.getElementById('buy-all-price').textContent = `${totalPrice}$`;
 
   // Check if PayPal is configured
   if (PAYPAL_CLIENT_ID === 'YOUR_PAYPAL_CLIENT_ID') {

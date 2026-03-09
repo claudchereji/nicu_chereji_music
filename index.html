@@ -30,245 +30,52 @@
        </div>
      </section>
 
-     <!-- Store Section -->
-     <section id="store" class="store">
-       <div class="store-header">
-         <h2>Magazin de Muzică</h2>
-         <p>Toate cântecele: 1,99$ fiecare | Cumpără toate 6 pentru 11,94$</p>
-       </div>
+      <!-- Store Section -->
+      <section id="store" class="store">
+        <div class="store-header">
+          <h2>Magazin de Muzică</h2>
+          <p id="store-subtitle"></p>
+        </div>
 
-      <div class="albums-grid">
-        <!-- BUY ALL OPTION - TOP CARD -->
-        <div class="album-card buy-all-card">
-          <div class="album-cover buy-all-cover">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="buy-all-icon">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M30 50 L45 65 L70 35" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-           <div class="album-info">
-             <h3>Colecția Completă</h3>
-             <p class="album-type">Toate 6 cântecele</p>
-             <p class="price">11,94$</p>
-             <button class="btn btn-primary buy-all-btn" onclick="buyAll()">
-               Cumpară Tot
-             </button>
+       <div class="albums-grid" id="songs-grid">
+         <!-- BUY ALL OPTION - TOP CARD -->
+         <div class="album-card buy-all-card">
+           <div class="album-cover buy-all-cover">
+             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="buy-all-icon">
+               <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+               <path d="M30 50 L45 65 L70 35" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+             </svg>
            </div>
-        </div>
+            <div class="album-info">
+              <h3>Colecția Completă</h3>
+              <p class="album-type" id="buy-all-count">Toate cântecele</p>
+              <p class="price" id="buy-all-price">11,94$</p>
+              <button class="btn btn-primary buy-all-btn" onclick="buyAll()">
+                Cumpără Tot
+              </button>
+            </div>
+         </div>
 
-        <!-- TRACK LIST POPUP (Reusable for all albums) -->
-        <div id="track-list-popup" class="track-list-popup" style="display: none;" onclick="if(event.target === this) closeTrackListPopup()">
-          <div class="popup-content">
-            <button class="popup-close" onclick="closeTrackListPopup()">✕</button>
-            <div class="popup-header">
-              <h3 id="popup-album-title"></h3>
-              <p id="popup-track-count"></p>
-            </div>
-            <div id="track-list-container" class="track-list-container">
-              <!-- Tracks will be inserted here -->
-            </div>
-            <div id="current-track-player" class="mini-track-player" style="display: none;">
-              <button class="track-play-btn" id="popup-play-btn">▶</button>
-              <input type="range" class="mini-track-slider" id="popup-slider" min="0" max="100" value="0">
-              <span class="mini-track-time" id="popup-time">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DEMO ALBUM: "Singles" - All individual tracks in one album -->
-        <div class="album-card album-card-full-width">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #f00000 0%, #c00030 100%)"></div>
-          </div>
-           <div class="album-info">
-             <h3>Singles</h3>
-             <p class="album-type">Compilație</p>
-             <p class="album-tracks">6 cântece</p>
-             <p class="price">11,94$</p>
-             <div class="album-actions">
-               <button class="btn btn-secondary btn-listen" onclick="openTrackListPopup('Singles')">
-                 ▶ Ascultă Cântecele
-               </button>
-               <button class="btn btn-primary" onclick="buyTrack('Singles', 11.94)">
-                 Cumpără Album
-               </button>
+         <!-- TRACK LIST POPUP (Reusable for miniplayer) -->
+         <div id="track-list-popup" class="track-list-popup" style="display: none;" onclick="if(event.target === this) closeTrackListPopup()">
+           <div class="popup-content">
+             <button class="popup-close" onclick="closeTrackListPopup()">✕</button>
+             <div class="popup-header">
+               <h3 id="popup-album-title"></h3>
+               <p id="popup-track-count"></p>
+             </div>
+             <div id="track-list-container" class="track-list-container">
+               <!-- Tracks will be inserted here -->
+             </div>
+             <div id="current-track-player" class="mini-track-player" style="display: none;">
+               <button class="track-play-btn" id="popup-play-btn">▶</button>
+               <input type="range" class="mini-track-slider" id="popup-slider" min="0" max="100" value="0">
+               <span class="mini-track-time" id="popup-time">0:00</span>
              </div>
            </div>
-        </div>
+         </div>
 
-        <!-- INDIVIDUAL SINGLES (Commented out - Now in "Singles" album demo)
-        <!--
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Bagă sabia in teaca</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Bagă sabia in teaca ⧸ versiune originală . - Nicu Chereji.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Bagă sabia in teaca', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Cine-i mai puternic</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Cine-i mai puternic.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Cine-i mai puternic', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Isus inca are răbdare</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Isus  inca are răbdare - Nicu Chereji.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Isus inca are răbdare', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Iubire fara de margini</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Iubire fara de margini.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Iubire fara de margini', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Daca Mama-ti Mai Traieste</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Nicu Chereji - Daca Mama-ti Mai Traieste.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Daca Mama-ti Mai Traieste', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Shema Israel</h3>
-            <p class="album-type">Single</p>
-            <p class="price">$1.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'ncmusic/Shema Israel , Nicu Chereji.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Shema Israel', 1.99)">
-                Buy
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-        -->
-
-        <!-- COMMENTED LOGIC FOR FUTURE ALBUMS
-        <div class="album-card">
-          <div class="album-cover">
-            <div class="cover-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
-          </div>
-          <div class="album-info">
-            <h3>Album Title Here</h3>
-            <p class="album-type">Full Album</p>
-            <p class="album-tracks">12 tracks</p>
-            <p class="price">$9.99</p>
-            <div class="album-actions">
-              <button class="btn btn-secondary btn-listen" onclick="playPreview(this, 'albums/album-1/preview.mp3')">
-                ▶ Preview
-              </button>
-              <button class="btn btn-primary" onclick="buyTrack('Album Title Here', 9.99)">
-                Buy Album
-              </button>
-            </div>
-            <div class="mini-player" style="display: none;">
-              <button class="play-pause-btn" onclick="togglePlayPause(this)">▶</button>
-              <input type="range" class="player-slider" min="0" max="100" value="0" onchange="seekTrack(this)" oninput="seekTrack(this)">
-              <span class="time-display">0:00</span>
-            </div>
-          </div>
-        </div>
-        -->
+          <!-- INDIVIDUAL SONGS - Generated dynamically from app.js -->
 
       </div>
     </section>
